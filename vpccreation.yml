@@ -1,8 +1,8 @@
  Description: >
     this template deploys a VPC, with a pair of public and private subnets spread
     across two Availability Zones. It deploys an Internet Gateway, with a default
-    route on the public subnets. It deploys a pair of NAT Gateways (one in each AZ)
-    and default routes for them in the private subnets.
+    route on the public subnets. It deploys a NAT Gateway and default routes for 
+    them in the private subnets.
  
  
  Parameters:
@@ -88,7 +88,7 @@
            Type: AWS::EC2::Subnet
            Properties:
                VpcId: !Ref VPC
-               AvailabilityZone: !Select [ 0, !GetAZs '' ]
+               AvailabilityZone: !Select [ 1, !GetAZs '' ]
                CidrBlock: !Ref PrivateSubnet1CIDR
                MapPublicIpOnLaunch: false
                Tags: 
